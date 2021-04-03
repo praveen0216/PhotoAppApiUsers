@@ -1,10 +1,25 @@
 package com.scratchdeveloper.photoapp.api.users.ui.model;
 
-public class CreateUserRequestModel {
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+public class CreateUserRequestModel {
+	
+	@NotNull(message = "first Name cannot be null")
+	@Size(min =2,message = "first name cannot be less than 2 and greater than 15" ,max=15)
 	private String firstName;
+	
+	@NotNull(message = "last Name cannot be null")
+	@Size(min =2,message = "last name cannot be less than 2 and greater than 15" ,max=15)
 	private String lastName;
+	
+	@NotNull(message = "password cannot be null")
+	@Size(min =8,message = "password cannot be less than 8 character and greater than 16" ,max=16)
 	private String password;
+	
+	@NotNull(message="email cannot be null")
+	@Email
 	private String email;
 
 	public CreateUserRequestModel() {
