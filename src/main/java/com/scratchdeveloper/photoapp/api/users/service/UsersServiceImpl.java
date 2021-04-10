@@ -30,10 +30,12 @@ public class UsersServiceImpl implements UsersService {
 		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 		
 		UserEntity userEntity=modelMapper.map(userDetails, UserEntity.class);
-		userEntity.setEncryptedPassword(UUID.randomUUID().toString());
+		//userEntity.setEncryptedPassword(UUID.randomUUID().toString());
+		userEntity.setEncryptedPassword("test");
 		
 		usersRepository.save(userEntity);
-		return null;
+		return modelMapper.map(userEntity, UserDto.class);
+		
 	}
 
 }
