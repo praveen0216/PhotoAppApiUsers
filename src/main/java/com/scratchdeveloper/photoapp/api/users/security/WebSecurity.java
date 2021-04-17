@@ -38,8 +38,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter{
 	}
 
 	private AuthenticationFilter getAuthenticationFilter() throws Exception {
-		AuthenticationFilter authenticationFilter= new AuthenticationFilter();
-		authenticationFilter.setAuthenticationManager(authenticationManager());//authenticationManager() comes from spring Security 
+		AuthenticationFilter authenticationFilter= new AuthenticationFilter(usersService,env,authenticationManager());
+		//authenticationFilter.setAuthenticationManager(authenticationManager());//authenticationManager() comes from spring Security 
 		return authenticationFilter;
 	}
 	
